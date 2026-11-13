@@ -10,21 +10,13 @@ useSeoMeta({
 const projects = [
   {
     number: '01',
-    name: 'Doll Finder TW',
-    localName: '娃娃去哪買',
-    category: '玩家生活索引',
-    description: '整理雙北二遊娃娃的販售資訊，優先追蹤官方商品、公開販售頁與補貨消息。',
-    details: ['依作品與角色搜尋', '來源與查核日期', '瀏覽器收藏'],
-    className: 'doll-project',
-  },
-  {
-    number: '02',
-    name: 'Endfield Factory Planner',
-    localName: '終末地產能規劃',
-    category: '遊戲資料工具',
-    description: '把製程、設備與藍圖資料放在一起，規劃產能時少一點來回查表。',
-    details: ['製程產能計算', '設備藍圖編輯', '本機草稿保存'],
-    className: 'endfield-project',
+    name: 'Game Updates',
+    localName: '遊戲更新總覽',
+    category: '遊戲資訊整理',
+    description: '把常玩的遊戲官方更新資訊整理在同一個地方，快速掌握版本更新與活動消息。',
+    details: ['原神・鳴潮', '少女前線 2：追放', '明日方舟：終末地'],
+    className: 'game-updates-project',
+    href: 'https://kitsun.cc/games/',
   },
 ]
 
@@ -113,38 +105,28 @@ const interests = ['遊戲資料整理', '實用的小工具', '把想法做成�
         </div>
 
         <div class="project-list">
-          <article
+          <a
             v-for="project in projects"
             :key="project.number"
             class="project-card"
             :class="project.className"
+            :href="project.href"
+            target="_blank"
+            rel="noreferrer"
+            :aria-label="`前往 ${project.name}，另開新視窗`"
           >
             <div class="project-art">
-              <template v-if="project.number === '01'">
-                <div class="doll-art-orbit orbit-a" />
-                <div class="doll-art-orbit orbit-b" />
-                <div class="doll-art-sun" />
-                <svg class="doll-art-icon" viewBox="0 0 180 180" role="presentation">
-                  <path d="M90 24c-19 0-33 14-33 32 0 10 4 18 11 24L52 128c-2 8 4 15 12 15h52c8 0 14-7 12-15l-16-48c7-6 11-14 11-24 0-18-14-32-33-32Z" />
-                  <path class="doll-art-face" d="M76 66c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5Zm18 0c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5Zm-9 14 5 4 5-4" />
-                  <path class="doll-art-accent" d="m54 42 5-12 5 12 12 5-12 5-5 12-5-12-12-5z" />
-                </svg>
-                <span class="art-label">FINDS<br>THAT MATTER</span>
-              </template>
-              <template v-else>
-                <div class="blueprint-grid" />
-                <div class="factory-orbit orbit-a" />
-                <div class="factory-orbit orbit-b" />
-                <svg class="factory-art-icon" viewBox="0 0 240 180" role="presentation">
-                  <path d="M35 132V73l45 26V73l45 26V51h83v81H35Z" />
-                  <path class="factory-window" d="M150 67h17v20h-17zm29 0h17v20h-17zm-29 34h17v20h-17zm29 0h17v20h-17z" />
-                  <path class="factory-belt" d="M47 145h145m-127 0v10m29-10v10m29-10v10m29-10v10m29-10v10" />
-                  <circle class="factory-node" cx="67" cy="65" r="7" />
-                  <circle class="factory-node" cx="114" cy="52" r="7" />
-                  <path class="factory-link" d="M67 65 114 52 150 50" />
-                </svg>
-                <span class="art-label">PLAN<br>THE FLOW</span>
-              </template>
+              <div class="game-art-grid" />
+              <div class="game-art-orbit game-art-orbit-one" />
+              <div class="game-art-orbit game-art-orbit-two" />
+              <div class="update-patch" aria-hidden="true">
+                <span class="patch-label">PATCH NOTES</span>
+                <span class="patch-line patch-line-long" />
+                <span class="patch-line patch-line-medium" />
+                <span class="patch-line patch-line-short" />
+                <span class="patch-status"><i /> TRACKING</span>
+              </div>
+              <span class="art-label">TRACK<br>THE UPDATE</span>
             </div>
 
             <div class="project-content">
@@ -160,10 +142,10 @@ const interests = ['遊戲資料整理', '實用的小工具', '把想法做成�
               </ul>
               <div class="project-bottomline">
                 <span>NUXT <i>·</i> VUE <i>·</i> TYPESCRIPT</span>
-                <span class="project-spark" aria-hidden="true">✳</span>
+                <span class="project-link-label">開啟專案 <i aria-hidden="true">↗</i></span>
               </div>
             </div>
-          </article>
+          </a>
         </div>
 
         <div class="projects-note">

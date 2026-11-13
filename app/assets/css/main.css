@@ -511,6 +511,17 @@ a:focus-visible {
   border: 1px solid rgb(29 41 36 / 8%);
   border-radius: 14px;
   background: #fffdf8;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgb(29 41 36 / 12%);
+}
+
+.project-card:focus-visible {
+  outline: 3px solid #e76f4d;
+  outline-offset: 4px;
 }
 
 .project-art {
@@ -521,61 +532,104 @@ a:focus-visible {
   place-items: center;
 }
 
-.doll-project .project-art {
-  background: #f3d9bd;
+.game-updates-project {
+  background: var(--ink);
+  color: #f7f3e8;
 }
 
-.doll-art-orbit,
-.factory-orbit {
+.game-updates-project .project-art {
+  background: #22332c;
+}
+
+.game-art-grid {
   position: absolute;
-  width: 68%;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(215 250 97 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(215 250 97 / 10%) 1px, transparent 1px);
+  background-size: 25px 25px;
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 83%);
+}
+
+.game-art-orbit {
+  position: absolute;
+  width: 58%;
   aspect-ratio: 1;
-  border: 1px solid rgb(29 41 36 / 14%);
+  border: 1px solid rgb(215 250 97 / 26%);
   border-radius: 50%;
 }
 
-.doll-art-orbit.orbit-a {
-  transform: rotate(25deg) scaleX(1.45);
+.game-art-orbit-one {
+  transform: scaleX(1.7) rotate(-27deg);
 }
 
-.doll-art-orbit.orbit-b {
-  transform: rotate(-32deg) scaleX(1.16);
+.game-art-orbit-two {
+  width: 76%;
+  transform: scaleX(1.25) rotate(38deg);
 }
 
-.doll-art-sun {
-  position: absolute;
-  width: 175px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #f9b37f;
-  box-shadow: 22px 22px 0 rgb(255 248 234 / 45%);
-}
-
-.doll-art-icon {
+.update-patch {
   position: relative;
   z-index: 1;
-  width: 164px;
-  overflow: visible;
-  filter: drop-shadow(0 10px 7px rgb(112 74 41 / 13%));
+  display: flex;
+  width: min(66%, 270px);
+  min-height: 168px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 27px;
+  transform: rotate(-4deg);
+  border: 1px solid rgb(215 250 97 / 58%);
+  border-radius: 8px;
+  background: #f4f1e9;
+  box-shadow: 12px 15px 0 rgb(0 0 0 / 15%);
+  color: var(--ink);
 }
 
-.doll-art-icon > path:first-child {
-  fill: #fff6e7;
-  stroke: #78533d;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 3px;
+.patch-label,
+.patch-status {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .1em;
 }
 
-.doll-art-face {
-  fill: none;
-  stroke: #78533d;
-  stroke-linecap: round;
-  stroke-width: 3px;
+.patch-label {
+  margin-bottom: 3px;
+  color: #747d72;
 }
 
-.doll-art-accent {
-  fill: var(--orange);
+.patch-line {
+  height: 6px;
+  border-radius: 999px;
+  background: #d8d5ca;
+}
+
+.patch-line-long {
+  width: 88%;
+  background: #43584d;
+}
+
+.patch-line-medium {
+  width: 72%;
+}
+
+.patch-line-short {
+  width: 51%;
+}
+
+.patch-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  color: #617462;
+  font-size: 8px;
+}
+
+.patch-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e67b58;
 }
 
 .art-label {
@@ -590,72 +644,7 @@ a:focus-visible {
   text-align: right;
 }
 
-.endfield-project {
-  background: var(--ink);
-  color: #f7f3e8;
-}
-
-.endfield-project .project-art {
-  background: #22332c;
-}
-
-.blueprint-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgb(215 250 97 / 10%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(215 250 97 / 10%) 1px, transparent 1px);
-  background-size: 25px 25px;
-  mask-image: radial-gradient(ellipse at center, black 25%, transparent 83%);
-}
-
-.factory-orbit {
-  width: 58%;
-  border-color: rgb(215 250 97 / 26%);
-}
-
-.factory-orbit.orbit-a {
-  transform: scaleX(1.7) rotate(-27deg);
-}
-
-.factory-orbit.orbit-b {
-  width: 76%;
-  transform: scaleX(1.25) rotate(38deg);
-}
-
-.factory-art-icon {
-  position: relative;
-  z-index: 1;
-  width: 77%;
-  overflow: visible;
-  fill: #b8d7d2;
-  filter: drop-shadow(0 12px 7px rgb(0 0 0 / 16%));
-}
-
-.factory-window {
-  fill: #304940;
-}
-
-.factory-belt,
-.factory-link {
-  fill: none;
-  stroke: var(--lime);
-  stroke-linecap: round;
-  stroke-width: 3px;
-}
-
-.factory-link {
-  stroke-dasharray: 4 5;
-  stroke-width: 2px;
-}
-
-.factory-node {
-  fill: var(--orange);
-  stroke: #22332c;
-  stroke-width: 3px;
-}
-
-.endfield-project .art-label {
+.game-updates-project .art-label {
   color: rgb(245 243 232 / 62%);
 }
 
@@ -688,7 +677,7 @@ a:focus-visible {
   color: #888b82;
 }
 
-.endfield-project .project-category {
+.game-updates-project .project-category {
   color: #aab7ad;
 }
 
@@ -706,7 +695,7 @@ a:focus-visible {
   font-size: 11px;
 }
 
-.endfield-project .project-local-name {
+.game-updates-project .project-local-name {
   color: #aab7ad;
 }
 
@@ -718,7 +707,7 @@ a:focus-visible {
   line-height: 1.75;
 }
 
-.endfield-project .project-description {
+.game-updates-project .project-description {
   color: #c1cbc2;
 }
 
@@ -739,7 +728,7 @@ a:focus-visible {
   font-size: 9px;
 }
 
-.endfield-project .project-details li {
+.game-updates-project .project-details li {
   border-color: #45554c;
   color: #d5dfd3;
 }
@@ -763,13 +752,18 @@ a:focus-visible {
   font-style: normal;
 }
 
-.project-spark {
-  color: #df7857;
-  font-size: 16px;
+.project-link-label {
+  color: var(--lime);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: normal;
 }
 
-.endfield-project .project-spark {
+.project-link-label i {
+  padding-left: 4px;
   color: var(--lime);
+  font-size: 15px;
+  font-style: normal;
 }
 
 .projects-note {
